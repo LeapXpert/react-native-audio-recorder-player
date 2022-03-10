@@ -229,6 +229,9 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
                 mTimer = Timer()
                 mTimer!!.schedule(mTask, 0, subsDurationMillis.toLong())
                 val resolvedPath = if (((path == "DEFAULT"))) "${reactContext.cacheDir}/$defaultFileName" else path
+                val urlObj = Arguments.createMap()
+                urlObj.putString("url", resolvedPath)
+                sendEvent(reactContext, "audioFileURL", urlObj)
                 promise.resolve(resolvedPath)
             }
 

@@ -32,7 +32,7 @@ class RNAudioRecorderPlayer: RCTEventEmitter, AVAudioRecorderDelegate {
     }
 
     override func supportedEvents() -> [String]! {
-        return ["rn-playback", "rn-recordback"]
+        return ["rn-playback", "rn-recordback", "audioFileURL"]
     }
 
     func setAudioFileURL(path: String) {
@@ -151,7 +151,9 @@ class RNAudioRecorderPlayer: RCTEventEmitter, AVAudioRecorderDelegate {
         var audioQuality = audioSets["AVEncoderAudioQualityKeyIOS"] as? Int
 
         setAudioFileURL(path: path)
-
+        self.sendEvent(withName: "audioFileURL", body: [    
+                    "url": path,
+        ])
         if (sampleRate == nil) {
             sampleRate = 44100;
         }
