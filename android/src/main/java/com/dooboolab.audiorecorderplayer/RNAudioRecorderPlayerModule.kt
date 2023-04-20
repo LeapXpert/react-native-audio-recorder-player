@@ -195,7 +195,7 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
         } else {
             mediaPlayer = MediaPlayer()
         }
-        
+
         val attr = AudioAttributes.Builder()
             .setLegacyStreamType(AudioManager.STREAM_NOTIFICATION)
             .build()
