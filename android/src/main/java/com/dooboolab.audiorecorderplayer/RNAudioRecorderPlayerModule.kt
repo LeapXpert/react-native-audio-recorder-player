@@ -17,8 +17,6 @@ import com.facebook.react.modules.core.PermissionListener
 import java.io.IOException
 import java.util.*
 import kotlin.math.log10
-import android.media.AudioAttributes
-import android.media.AudioManager
 
 class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), PermissionListener {
     private var audioFileURL = ""
@@ -195,11 +193,6 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
         } else {
             mediaPlayer = MediaPlayer()
         }
-
-        val attr = AudioAttributes.Builder()
-            .setLegacyStreamType(AudioManager.STREAM_NOTIFICATION)
-            .build()
-        mediaPlayer!!.setAudioAttributes(attr)
 
         try {
             if ((path == "DEFAULT")) {
